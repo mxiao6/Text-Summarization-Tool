@@ -1,0 +1,31 @@
+{
+  "name": "cs410",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "babel-node server.js",
+    "ins": "npm install && cd client && npm install && cd ..",
+    "client": "cd client && npm start",
+    "server": "nodemon --exec babel-node server.js",
+    "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\""
+  },
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "lodash": "^4.17.5",
+    "nodemon": "^1.14.12",
+    "request": "^2.83.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-latest": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "concurrently": "^3.5.1"
+  },
+  "babel": {
+    "presets": [
+      "latest",
+      "stage-2"
+    ]
+  }
+}
