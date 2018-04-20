@@ -9,13 +9,13 @@ app.use(bodyParser.urlencoded({ extended: true }));
  */
 app.use(bodyParser.json({ limit: '1024kb' }));
 
-app.get('/hello', function(req, res) {
-  res.status(200).send('hello world');
-});
-
 app.post('/load', function(req, res) {
   console.log('load api', req.body);
-  res.status(200).send('load successful');
+  var spawn = require('child_process').spawn;
+  var pythonProcess = spawn('python', ['./test.py', ...req.body]);
+  pythonProcess.stdout.on('data', function(data) {
+    res.status(200).send(data);
+  });
 });
 
 /**

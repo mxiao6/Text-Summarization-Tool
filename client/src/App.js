@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
-import { Button, Row, Col, Upload, Input, Modal, message } from 'antd';
+import { Spin, Button, Upload } from 'antd';
 
 import './App.css';
 import axios from 'axios';
@@ -11,21 +11,21 @@ class App extends Component {
 
     this.state = {
       result: '',
+      inputList: [],
+      loading: false,
     };
   }
 
-  componentWillMount() {
-    axios
-      .get('/hello')
-      .then(res => {
-        this.setState({
-          result: res.data,
-        });
-      })
-      .catch(e => {
-        console.error('hello', e.response);
-      });
-  }
+  // input: [string1, string2]
+  // output: [[key1, key2], []]
+
+  _addToInput = value => {
+    let newInput = this.state.inputList.slice(0);
+    newInput.push(value);
+    this.setState({
+      inputList: newInput,
+    });
+  };
 
   /**
    * before upload, get the file content, parse it then call api manually.
@@ -36,17 +36,8 @@ class App extends Component {
   beforeUpload = file => {
     var reader = new FileReader();
     let callback = text => {
-      axios
-        .post('/load', text)
-        .then(res => {
-          console.log(res.data);
-          this.setState({
-            result: res.data,
-          });
-        })
-        .catch(e => {
-          console.error(e.response);
-        });
+      this._addToInput(text);
+      console.log('inputList', this.state.inputList);
     };
     reader.onload = function(e) {
       var text = reader.result;
@@ -55,6 +46,24 @@ class App extends Component {
     reader.readAsText(file);
 
     return false;
+  };
+
+  _onSubmit = () => {
+    this.setState({
+      loading: true,
+    });
+    axios
+      .post('/load', this.state.inputList)
+      .then(res => {
+        console.log(res.data);
+        this.setState({
+          result: res.data,
+          loading: false,
+        });
+      })
+      .catch(e => {
+        console.error(e.response);
+      });
   };
 
   /**
@@ -70,7 +79,8 @@ class App extends Component {
         >
           <Button type="primary">Load</Button>
         </Upload>
-        <div>{this.state.result}</div>
+        <Button onClick={this._onSubmit}>Submit</Button>
+        {this.state.loading ? <Spin /> : <div>{this.state.result}</div>}
       </div>
     );
   }
