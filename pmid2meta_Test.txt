@@ -1,4 +1,1 @@
-hello, world
-yes, sir
-cs410
-text editor
+A probabilistic safety analysis of incidents in nuclear research reactors.. This work aims to evaluate the potential risks of incidents in nuclear research reactors. For its development, two databases of the International Atomic Energy Agency (IAEA) were used: the Research Reactor Data Base (RRDB) and the Incident Report System for Research Reactor (IRSRR). For this study, the probabilistic safety analysis (PSA) was used. To obtain the result of the probability calculations for PSA, the theory and equations in the paper IAEA TECDOC-636 were used. A specific program to analyse the probabilities was developed within the main program, Scilab 5.1.1. for two distributions, Fischer and chi-square, both with the confidence level of 90 %. Using Sordi equations, the maximum admissible doses to compare with the risk limits established by the International Commission on Radiological Protection (ICRP) were obtained. All results achieved with this probability analysis led to the conclusion that the incidents which occurred had radiation doses within the stochastic effects reference interval established by the ICRP-64.

@@ -12,7 +12,7 @@ app.use(bodyParser.json({ limit: '1024kb' }));
 app.post('/load', function(req, res) {
   console.log('load api', req.body);
   var spawn = require('child_process').spawn;
-  var pythonProcess = spawn('python', ['./test.py', ...req.body]);
+  var pythonProcess = spawn('python2.7', ['./test.py', ...req.body]);
   pythonProcess.stdout.on('data', function(data) {
     res.status(200).send(data);
   });
