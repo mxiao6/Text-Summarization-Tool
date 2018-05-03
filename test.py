@@ -12,8 +12,6 @@ fileList = sys.argv[1:]
 gett = fileList
 if gett != None:
   part2(gett)
-  with open('first_step') as rf:
-    dict_list = pickle.load(rf)
   with open('second_step') as rf:
     dict_list = pickle.load(rf)
   final_list = []
