@@ -30,7 +30,7 @@ def get_abbr(tokens, abbr_dict):
                         new_dict[found].append(string_found)
                     else:
                         new_dict[found] = [string_found]
-                break
+                    break
     tokens = [x for x in tokens if not re.findall("^\(\S+\)$", x)]
     for i in range(len(tokens)):
         if tokens[i] in new_dict.keys():
