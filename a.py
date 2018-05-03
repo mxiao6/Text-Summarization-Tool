@@ -8,12 +8,11 @@ import sys
 import nltk
 from nltk.corpus import stopwords
 from nltk.stem.snowball import SnowballStemmer
+import re
 
 stemmer = SnowballStemmer('english')
-
-# THRES = 1
 stopwords = set(stopwords.words('english'))
-
+# THRES = 1
 def get_abbr(tokens, abbr_dict):
     new_dict = {}
     for i in range(len(tokens)):
@@ -51,14 +50,15 @@ def tokenize(document, abbr_dict):
         return None
     
     tokens = document.translate(None, "!\"#$%&\'*+,.:;<=>?@[\]^`{|}~").split()
-    
     new_document = get_abbr(tokens, abbr_dict)
-#     tokens = new_document.split()
+    tokens = new_document.translate(None,"()").split()
+
+    # tokens = document.translate(None, "!\"#$%&\'*+,.:;<=>?@()[\]^`{|}~").split()
     
-#     for i in range(len(tokens)):
-#         if tokens[i].upper() != tokens[i]:
-#             tokens[i] = tokens[i].lower()
-    return new_document
+    for i in range(len(tokens)):
+        if tokens[i].upper() != tokens[i]:
+            tokens[i] = tokens[i].lower()
+    return new_document, tokens
 
 
 
@@ -80,17 +80,14 @@ def check_combine(document, tf, last_tf,THRES,size,num_tok):
 
 def build_tf(document,threshold,abbr_dict):
     tf = defaultdict(int)
-    token_list = tokenize(document,abbr_dict)
+    new_doc, token_list = tokenize(document,abbr_dict)
+
     for token in token_list:
         token = token.rstrip().lstrip()
-        # word = token.replace(",", "")
-        # word = word.replace(".", "")
-        # word = word.replace("(", "")
-        # word = word.replace(")", "")
-        # word = word.replace(":", "")
         if token not in stopwords and token != '' and not token.isdigit():
             tf[token] += 1
     size = len(token_list) * 1.0
+    # size = 1
     THRES = threshold * size
 
     for (a,b) in tf.items():
@@ -103,7 +100,7 @@ def build_tf(document,threshold,abbr_dict):
     multi_level_tf = []
     num_tok = 2
     while True:
-        new_tf = check_combine(document, tf, last_tf, THRES, size, num_tok)
+        new_tf = check_combine(new_doc, tf, last_tf, THRES, size, num_tok)
         if len(new_tf) == 0:
             break
         last_tf = new_tf
