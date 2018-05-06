@@ -124,14 +124,14 @@ def part1(cont,threshold=0.01):
 	else:
 		content = cont
 	# print(content[10764])
-
+    abbr_dict = {}
 	dict_list = []
 	count = 0
 	# print("Doing frequent pattern mining")
 	for document in content:
 		if document[-1] == '\n':
 			document = document[:-1]
-		tf = build_tf(document,threshold)
+		tf = build_tf(document,threshold,abbr_dict)
 		# print(tf)
 		# sorted_tf = sorted(tf.items(), key=operator.itemgetter(1), reverse=True)
 		# print(sorted_tf)
@@ -143,6 +143,9 @@ def part1(cont,threshold=0.01):
 		with open('first_step','w') as wf:
 			pickle.dump(dict_list,wf)
 			# print("stored in \"first_step\"!")
+        with open('abbreviation','w') as wf:
+            pickle.dump(abbr_dict,wf)
+
 		return None
 	else:
 		return dict_list
