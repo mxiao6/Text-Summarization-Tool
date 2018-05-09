@@ -117,38 +117,38 @@ def build_tf(document,threshold,abbr_dict):
 
 
 def part1(cont,threshold=0.01):
-	content = None
-	if cont == None:
-		with open('pmid2meta_autophrase.chunk0') as f:
-			content = f.readlines()
-	else:
-		content = cont
-	# print(content[10764])
-    abbr_dict = {}
-	dict_list = []
-	count = 0
-	# print("Doing frequent pattern mining")
-	for document in content:
-		if document[-1] == '\n':
-			document = document[:-1]
-		tf = build_tf(document,threshold,abbr_dict)
-		# print(tf)
-		# sorted_tf = sorted(tf.items(), key=operator.itemgetter(1), reverse=True)
-		# print(sorted_tf)
-		dict_list.append(tf)
-		# if count % 5000 == 0:
-			# print(count)
-		count += 1
-	if cont == None:
-		with open('first_step','w') as wf:
-			pickle.dump(dict_list,wf)
-			# print("stored in \"first_step\"!")
-        with open('abbreviation','w') as wf:
-            pickle.dump(abbr_dict,wf)
+  content = None
+  if cont == None:
+    with open('pmid2meta_autophrase.chunk0') as f:
+      content = f.readlines()
+  else:
+    content = cont
+  # print(content[10764])
+  abbr_dict = {}
+  dict_list = []
+  count = 0
+  # print("Doing frequent pattern mining")
+  for document in content:
+    if document[-1] == '\n':
+      document = document[:-1]
+    tf = build_tf(document,threshold,abbr_dict)
+    # print(tf)
+    # sorted_tf = sorted(tf.items(), key=operator.itemgetter(1), reverse=True)
+    # print(sorted_tf)
+    dict_list.append(tf)
+    # if count % 5000 == 0:
+      # print(count)
+    count += 1
+  if cont == None:
+    with open('first_step','w') as wf:
+      pickle.dump(dict_list,wf)
+      # print("stored in \"first_step\"!")
+      with open('abbreviation','w') as wf:
+        pickle.dump(abbr_dict,wf)
 
-		return None
-	else:
-		return dict_list
+    return None
+  else:
+    return dict_list
 if __name__ == '__main__':
-	part1(None)
+  part1(None)
 
