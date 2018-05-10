@@ -6,11 +6,15 @@ Our webapp performs ​text summarization for paper collections (in particular, 
 
 ## 2) How the software is implemented
 
-### Frontend
+### Frontend && Backend
 
-React
+The frontend uses React and the backend uses express. And the backend is connected with python codes.
 
-### Backend
+The frontend simply consists of two buttons -- "Upload" and "Submit". All the uploaded files by the user will be parsed and stored in frontend temporarily. After user click "Submit", all the parsed files will be sent to backend API and waiting for response. Once the response is returned, it renders the result.
+
+The backend only does one thing -- call the python codes with the files from frontend. Once it receives the result from python codes, the backend will send the response to frontend.
+
+### Python Algorithm
 
 Python
 
@@ -30,8 +34,8 @@ npm run dev
 
 ## 4) Brief description of contribution of each team member
 
-Mingze Xiao (mxiao6): Frontend
+Mingze Xiao (mxiao6): Frontend && Backend
 
-Naijing Zhang (nzhang31): Backend
+Naijing Zhang (nzhang31): Python Algorithm
 
-Zongyi Wang (zwang195): Backend
+Zongyi Wang (zwang195): Python Algorithm

@@ -77,7 +77,7 @@ class App extends Component {
           action="http://localhost:5000/load"
           beforeUpload={this.beforeUpload}
         >
-          <Button type="primary">Load</Button>
+          <Button type="primary">Upload</Button>
         </Upload>
         <Button onClick={this._onSubmit}>Submit</Button>
         {this.state.loading ? <Spin /> : <div>{this.state.result}</div>}
