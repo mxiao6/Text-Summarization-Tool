@@ -32,6 +32,6 @@ npm run dev
 
 Mingze Xiao (mxiao6): Frontend
 
-Quannai Zhang (nzhang31): Backend
+Naijing Zhang (nzhang31): Backend
 
 Zongyi Wang (zwang195): Backend
