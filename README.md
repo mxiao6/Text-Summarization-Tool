@@ -2,7 +2,7 @@
 
 ## 1) An overview of the function of the code
 
-(i.e., what it does and what it can be used for).
+Our webapp performs ​text summarization for paper collections (in particular, we will develop this tool for Pubmed dataset), it will automatically find out key topics/keywords/key phrases of the papers. Those (medical) researchers who want to know what the papers are about can get a quick overview of those papers.
 
 ## 2) How the software is implemented
 
