@@ -16,8 +16,16 @@ Python
 
 ## 3) How to install and run
 
+### Install
+
 ```bash
-npm install && npm start
+npm run ins
+```
+
+### Run
+
+```bash
+npm run dev
 ```
 
 ## 4) Brief description of contribution of each team member
