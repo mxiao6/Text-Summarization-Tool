@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import _ from 'lodash';
 import { Spin, Button, Upload } from 'antd';
 
 import './App.css';
