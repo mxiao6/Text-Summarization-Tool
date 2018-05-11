@@ -94,7 +94,12 @@ class App extends Component {
           </Upload>
         </div>
         <div>
-          <Button onClick={this._onSubmit}>Submit</Button>
+          <Button
+            onClick={this._onSubmit}
+            disabled={_.isEmpty(this.state.inputList)}
+          >
+            Submit
+          </Button>
         </div>
       </div>
     );
