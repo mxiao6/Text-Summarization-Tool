@@ -18,11 +18,14 @@ app.post('/load', function(req, res) {
   });
 });
 
-/**
- * the other api calls will be 404 not found
- */
-app.use((req, res) => {
-  res.status(404).send('404 Not Found');
-});
+// /**
+//  * the other api calls will be 404 not found
+//  */
+// app.use((req, res) => {
+//   res.status(404).send('404 Not Found');
+// });
+
+// need to put at the last for frontend
+app.use(express.static('public'));
 
 module.exports = app;
