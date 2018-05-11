@@ -36,6 +36,24 @@ npm start
 
 Open browser and go to http://localhost:5000/.
 
+### Build Frontend
+
+```bash
+npm run build
+```
+
+### Install Backend and Frontend for development
+
+```bash
+npm run ins
+```
+
+### Development
+
+```bash
+npm run dev
+```
+
 ## 4) Brief description of contribution of each team member
 
 Mingze Xiao (mxiao6): Frontend && Backend
