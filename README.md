@@ -16,7 +16,17 @@ The backend only does one thing -- call the python codes with the files from fro
 
 ### Python Algorithm
 
-First of all, since we have found that there are lots of abbreviations in the pubmed data and we need to further combine phrase abbreviation and its full spelling in the algorithm, such as matrix metallopeptidase 9 (MMP9), we handle this problem at the beginning of tokenization part and ..
+#### Step 1: Preprocessing:
+
+First of all, since we have found that there are lots of abbreviations in the pubmed data and we need to further combine phrase abbreviation and its full spelling in the algorithm, such as matrix metallopeptidase 9 (MMP9), we handle this problem at the beginning of the tokenization part by modifying the content of the original file that users submit.
+
+Then we transfer all tokens to lower case and remove stop words from them.
+
+#### Step 2: Term Frequency:
+
+For term frequency, we perform the following procedure recursively: 
+
+
 
 ## 3) How to install and run
 
