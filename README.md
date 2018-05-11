@@ -16,7 +16,7 @@ The backend only does one thing -- call the python codes with the files from fro
 
 ### Python Algorithm
 
-Python
+First of all, since we have found that there are lots of abbreviations in the pubmed data and we need to further combine phrase abbreviation and its full spelling in the algorithm, such as matrix metallopeptidase 9 (MMP9), we handle this problem at the beginning of tokenization part and ..
 
 ## 3) How to install and run
 
