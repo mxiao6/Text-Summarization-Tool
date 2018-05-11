@@ -23,14 +23,18 @@ Python
 ### Install
 
 ```bash
-npm run ins
+npm install
 ```
 
 ### Run
 
 ```bash
-npm run dev
+npm start
 ```
+
+### Use
+
+Open browser and go to http://localhost:5000/.
 
 ## 4) Brief description of contribution of each team member
 
